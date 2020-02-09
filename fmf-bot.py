@@ -1,6 +1,17 @@
 import praw
 from secret import reddit # this is my credentials for the script, hidden from github at the moment
+from datetime import datetime, timezone
 # look into beautiful soup; python library for web scraping
+
+# function to convert the unix time taken from submission.created_utc (which the time a post is created in UNIX Time) to user's local time
+def unix_to_local(unix_time):
+    # convert the unix time to utc time
+    utc_time = datetime.utcfromtimestamp(unix_time)
+    # convert the utc time to local time
+    local_time = utc_time.replace(tzinfo=timezone.utc).astimezone(tz=None)
+    # format the local time to 'day/month/year hour:minute AM/PM' 
+    local_time_format = local_time.strftime('%d/%m/%Y %I:%M %p') # https://docs.python.org/2/library/time.html ; look under time.strftime to see more time format options
+    return local_time_format
 
 def main():
     # get 5 hot posts from the frugalmalefashion subreddit
@@ -14,15 +25,15 @@ def main():
         if not post.stickied:
             # if the post does not have a link in its title
             if post.is_self:
-                # double space followed by new line allows PM format to have line breaks for each post title
-                user_message += '{post_title} -> {post_link}  \n'.format(
-                    post_title = post.title, post_link = post.shortlink)                
+                # double space followed by new line allows private message format to have line breaks for each post title
+                user_message += '{post_time_created} : {post_title} -> {post_link}  \n'.format(
+                    post_time_created = unix_to_local(post.created_utc) , post_title = post.title, post_link = post.shortlink)                
             else:
                 hyperlink = '[{title}]({link})'
                 post_hyperlink = hyperlink.format(
                     link = post.url, title = post.title)
-                user_message += '{post_title} -> {post_link}  \n'.format(
-                    post_title = post_hyperlink, post_link = post.shortlink)
+                user_message += '{post_time_created} : {post_title} -> {post_link}  \n'.format(
+                    post_time_created = unix_to_local(post.created_utc), post_title = post_hyperlink, post_link = post.shortlink)
             
             """ bottom code posts description of post, WIP to regex to extract discount code or link of deal
             if post.selftext != '':
