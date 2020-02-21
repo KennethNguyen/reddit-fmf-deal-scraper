@@ -8,7 +8,7 @@ Script that scrapes /r/frugalmalefashion for new deals and notifies the user of 
 * PRAW (Python Reddit API Wrapper)
 
 ## Prerequisite
-Have Python installed to be able to run script
+Have Python 3.5+ installed to be able to run script
 
 ## Getting Started
 The user must have PRAW installed on their work environment. After that, the user must create a Reddit application from their Reddit account. Finally, all the user has to do is to clone this repository, input their application's credentials into the authentication.py file and run the fmf-bot.py script.
@@ -36,7 +36,16 @@ $ git clone https://github.com/KennethNguyen/reddit-fmf-deal-scraper
 ```
 
 ### Adding in user/app credentials
-Open the file authentication.py from the cloned repositry. 
+Open the file authentication.py from the cloned repositry. Insert each credential accordingly to what the comments specify on each line within the quotes ('').
+
+To change who you want to send the message to, change the redditor name on line 47 in the file fmf-bot.py
+
+### Running the script
+Run the script by typing
+```
+$ python3 fmf-bot.py
+```
+After this, you should see a message in your Reddit inbox or there should be a message in whoever you sent it to. 
 
 ## Future Implementations
 * Automate script to run periodically
