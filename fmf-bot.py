@@ -1,5 +1,6 @@
 import praw
-from secret import reddit # this is my credentials for the script, hidden from github at the moment
+from secret import my_reddit # this is my credentials for testing the script, hidden from github at the moment
+from authentication import reddit # user's credentials
 from datetime import datetime, timezone
 # look into beautiful soup; python library for web scraping
 
@@ -16,7 +17,7 @@ def unix_to_local(unix_time):
 def main():
     # get 5 hot posts from the frugalmalefashion subreddit
     # can be top('hour/day/week/month/year', limit=x) or new(limit=x), etc.
-    hot_posts = reddit.subreddit('frugalmalefashion').new(limit=5)
+    hot_posts = my_reddit.subreddit('frugalmalefashion').new(limit=5)
     
     # each post title and code/link of deal is concatenated to user_message string and used as PM to send to user
     user_message = ''
@@ -44,7 +45,7 @@ def main():
             """
 
     # messages user 
-    reddit.redditor('SaltGrizzly').message('Hot Post Roundup', user_message)
+    my_reddit.redditor('SaltGrizzly').message('Hot Post Roundup', user_message)
 
 if __name__ == "__main__":
     main()
