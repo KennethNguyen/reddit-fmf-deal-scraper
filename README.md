@@ -1,25 +1,48 @@
 # reddit-fmf-deal-scraper (Work In Progress)
 
 ## Description
+Script that scrapes /r/frugalmalefashion for new deals and notifies the user of said deals.
 
-Script that scrapes /r/frugalmalefashion for new deals and notifies the user of said deals
+### Utilized
+* Python3
+* PRAW (Python Reddit API Wrapper)
 
-## Goals / Idea
+## Prerequisite
+Have Python installed to be able to run script
 
-### Beginning Stages
-1. Script will run by user manually
-2. Find hot/top posts
-3. Send a message to user's reddit inbox containing a list of titles of what the deal entails and a link to the website and/or code of the deal
+## Getting Started
+The user must have PRAW installed on their work environment. After that, the user must create a Reddit application from their Reddit account. Finally, all the user has to do is to clone this repository, input their application's credentials into the authentication.py file and run the fmf-bot.py script.
 
-### Future Implementations
+### Installing PRAW
+To install PRAW, type or paste the following code to your terminal
+```
+$ pip install praw
+```
+Depending on your system, you may need to use pip3 to install packages for Python 3
+
+If PRAW needs to be updated, run
+```
+$ pip install --upgrade praw
+```
+
+### Register an application on Reddit to get credentials for script
+1. Go [here](https://www.reddit.com/prefs/apps/) and click 'create app' at the bottom of the page (after logging in)
+2. Give the app a name, label the app as a SCRIPT, give it a description, and set the redirect uri to be http://localhost:8080 
+
+### Clone repository
+On your local machine, clone this repository to your desired location by typing or pasting
+```
+$ git clone https://github.com/KennethNguyen/reddit-fmf-deal-scraper
+```
+
+### Adding in user/app credentials
+Open the file authentication.py from the cloned repositry. 
+
+## Future Implementations
 * Automate script to run periodically
 * Change script to comb through new posts if automated to run periodically
 * Create filter or search specifications for deals to look for; type of wardrobe, cost, size, brand, etc.
 * Option to send SMS text instead of a message to Reddit inbox (?)
-
-## Utilized
-* Python3
-* PRAW (Python Reddit API Wrapper)
 
 ## Author
 
