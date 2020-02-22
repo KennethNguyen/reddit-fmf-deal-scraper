@@ -1,7 +1,8 @@
 import praw
 from secret import my_reddit # this is my credentials for testing the script, hidden from github at the moment
 from authentication import reddit # user's credentials
-from datetime import datetime, timezone
+from datetime import datetime, timezone # for converting timezone and date logistics
+import time # used for the sleep() function to automate messages in specific intervals
 # look into beautiful soup; python library for web scraping
 
 # function to convert the unix time taken from submission.created_utc (which the time a post is created in UNIX Time) to user's local time
@@ -48,4 +49,6 @@ def main():
     my_reddit.redditor('SaltGrizzly').message('Hot Post Roundup', user_message)
 
 if __name__ == "__main__":
-    main()
+    while True:
+        main()
+        time.sleep(6000) # automate script to send new message every hour after execution of script
