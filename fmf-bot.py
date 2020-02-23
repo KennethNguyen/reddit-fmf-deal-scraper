@@ -17,20 +17,21 @@ def unix_to_local(unix_time):
 
 def main():
     # get 5 hot posts from the frugalmalefashion subreddit
-    # can be top('hour/day/week/month/year', limit=x) or new(limit=x), etc.
-    hot_posts = my_reddit.subreddit('frugalmalefashion').new(limit=5)
-    
+    # can be top('hour/day/week/month/year', limit=x) or hot(limit=x) or new(limit=x), etc.
+    hot_posts = my_reddit.subreddit('frugalmalefashion').hot(limit=5)
+
     # each post title and code/link of deal is concatenated to user_message string and used as PM to send to user
     user_message = ''
     for post in hot_posts:
-        # ignores posts that are stickied
-        if not post.stickied:
+        # ignores posts that are stickied and expired/out of stock
+        if not post.stickied and not post.link_flair_text == "[Expired/OOS] ":
             # if the post does not have a link in its title
             if post.is_self:
                 # double space followed by new line allows private message format to have line breaks for each post title
                 user_message += '{post_time_created} : {post_title} -> {post_link}  \n'.format(
                     post_time_created = unix_to_local(post.created_utc) , post_title = post.title, post_link = post.shortlink)                
             else:
+                # format message with the time of post: title of post which can be hyperlink -> link to post
                 hyperlink = '[{title}]({link})'
                 post_hyperlink = hyperlink.format(
                     link = post.url, title = post.title)
@@ -51,4 +52,4 @@ def main():
 if __name__ == "__main__":
     while True:
         main()
-        time.sleep(6000) # automate script to send new message every hour after execution of script
+        time.sleep(60) # automate script to send new message every hour after execution of script
