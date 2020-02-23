@@ -38,7 +38,7 @@ $ git clone https://github.com/KennethNguyen/reddit-fmf-deal-scraper
 ### Adding in user/app credentials
 Open the file authentication.py from the cloned repositry. Insert each credential accordingly to what the comments specify on each line within the quotes ('').
 
-To change who you want to send the message to, change the redditor name on line 47 in the file fmf-bot.py
+To change who you want to send the message to, change the redditor name on line 48 in the file fmf-bot.py
 
 ### Running the script
 Run the script by typing
@@ -46,12 +46,6 @@ Run the script by typing
 $ python3 fmf-bot.py
 ```
 After this, you should see a message in your Reddit inbox or there should be a message in whoever you sent it to. 
-
-## Future Implementations
-* Automate script to run periodically
-* Change script to comb through new posts if automated to run periodically
-* Create filter or search specifications for deals to look for; type of wardrobe, cost, size, brand, etc.
-* Option to send SMS text instead of a message to Reddit inbox (?)
 
 ## Author
 
