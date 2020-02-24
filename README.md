@@ -1,7 +1,9 @@
-# reddit-fmf-deal-scraper (Work In Progress)
+# reddit-fmf-deal-scraper
 
 ## Description
-Script that scrapes /r/frugalmalefashion for new deals and notifies the user of said deals.
+Script that scrapes /r/frugalmalefashion for new or hot deals and notifies the user of said deals by sending a private message. The script can run in periodic intervals or run only once; script customizations specified below in the section 'Features customization'.
+
+![alt text](exampleScript.png)
 
 ### Utilized
 * Python3
