@@ -36,16 +36,20 @@ $ git clone https://github.com/KennethNguyen/reddit-fmf-deal-scraper
 ```
 
 ### Adding in user/app credentials
-Open the file authentication.py from the cloned repositry. Insert each credential accordingly to what the comments specify on each line within the quotes ('').
+Open the file authentication.py from the cloned repositry. Insert each credential accordingly to what the comments specify on each line within the quotes (' ').
 
-To change who you want to send the message to, change the redditor name on line 48 in the file fmf-bot.py
+### Features customization
+* To change who you want to send the message to, change the redditor name on line 47 in the file fmf-bot.py
+* To change how long you want the script to run for, change the sleep number on line 52. (number is in seconds; 60 = 1 minute, 600 = 10 minutes, 6000 = 1 hour, etc.)
+* If you want the script to run only once, omit line 50 and 52. This removes the infinite while true loop.
+* To change if you want to retrieve posts by hot/new/top, alter .hot() on line 39 to the desired sort specified by the comment on line 20
 
 ### Running the script
 Run the script by typing
 ```
 $ python3 fmf-bot.py
 ```
-After this, you should see a message in your Reddit inbox or there should be a message in whoever you sent it to. 
+After this, you should see a message in your Reddit inbox or there should be a message in whoever you sent it to. To exit the script if it is on a timer, press Ctrl+C on the terminal used to run the script.
 
 ## Author
 
