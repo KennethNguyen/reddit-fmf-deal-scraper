@@ -1,5 +1,4 @@
 import praw
-from secret import my_reddit # this is my credentials for testing the script, hidden from github at the moment
 from authentication import reddit # user's credentials
 from datetime import datetime, timezone # for converting timezone and date logistics
 import time # used for the sleep() function to automate messages in specific intervals
@@ -36,7 +35,7 @@ def create_message(post):
 def main():
     # get 5 hot posts from the frugalmalefashion subreddit
     # can be top('hour/day/week/month/year', limit=x) or hot(limit=x) or new(limit=x), etc.
-    hot_posts = my_reddit.subreddit('frugalmalefashion').hot(limit=5)
+    hot_posts = reddit.subreddit('frugalmalefashion').hot(limit=5)
 
     # each post title and code/link of deal is concatenated to user_message string and used as PM to send to user
     user_message = ''
@@ -44,7 +43,7 @@ def main():
         user_message += create_message(post)
 
     # messages user 
-    my_reddit.redditor('SaltGrizzly').message('Hot Post Roundup', user_message)
+    reddit.redditor('').message('Hot Post Roundup', user_message)
 
 if __name__ == "__main__":
     while True:
